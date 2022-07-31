@@ -3,14 +3,13 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import { StrictMode } from 'react';
-import { robots } from './robots'
+import App from './App'
 import 'tachyons'; // npm install tachyons
-import CardList from './MyComponents/CardList';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <StrictMode>
-    <CardList robots={robots} />
+    <App />
   </StrictMode>
 );
 
