@@ -2,14 +2,19 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
+import Card from './MyComponents/Card';
 import { StrictMode } from 'react';
-import Hello from './MyComponents/Hello';
-// import 'tachyons'; // npm install tachyons
+import { robots } from './robots'
+import 'tachyons'; // npm install tachyons
 
+let cards = robots.map(robot => {
+  return <Card id={robot.id} name={robot.name} email={robot.email} />
+
+})
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <StrictMode>
-    <Hello greeting={'Hello' + ' React Ninja'} />
+    {cards}
   </StrictMode>
 );
 
