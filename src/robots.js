@@ -58,5 +58,19 @@ export const robots = [
         name: 'Clementina DuBuque',
         username: 'Moriah.Stanton',
         email: 'Rey.Padberg@karina.biz'
+    },
+    {
+        id: 11,
+        name: 'Joe Goldberg',
+        username: 'Joe Gold',
+        email: 'joe.goldberg@yahoo.mail'
+    },
+    {
+        id: 12,
+        name: 'Jon Snow',
+        username: 'John',
+        email: 'jon.snow@gmail.com'
     }
 ];
+
+// https://jsonplaceholder.typicode.com/users api for users data
