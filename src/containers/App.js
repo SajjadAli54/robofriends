@@ -4,7 +4,7 @@ import SearchBox from '../components/SearchBox'
 import './App.css'
 import Scroll from '../components/Scroll'
 import ErrorBoundry from '../components/ErrorBoundry'
-import { users } from './users'
+import { users } from './users.js'
 
 class App extends Component {
     constructor() {
