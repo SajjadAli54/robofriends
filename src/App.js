@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import CardList from './CardList'
 import SearchBox from './SearchBox'
 import './App.css'
+import Scroll from './Scroll'
 
 class App extends Component {
     constructor() {
@@ -18,11 +19,9 @@ class App extends Component {
             .then(response => response.json())
             .then(users => this.setState({ robots: users }))
 
-
-
-        // this.setState({
-        //     robots: robots
-        // })
+        // fetch('https://jsonplaceholder.typicode.com/posts')
+        //     .then(response => response.json())
+        //     .then(posts => console.log(posts))
     }
 
     onSearchChanges = event => {
@@ -42,7 +41,9 @@ class App extends Component {
             <div className='tc' >
                 <h1 className='f1'>RoboFriends</h1>
                 <SearchBox searchChange={this.onSearchChanges} />
-                <CardList robots={filteredRobots} />
+                <Scroll>
+                    <CardList robots={filteredRobots} />
+                </Scroll>
             </div>
         )
     }
