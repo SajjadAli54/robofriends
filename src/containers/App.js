@@ -4,6 +4,7 @@ import SearchBox from '../components/SearchBox'
 import './App.css'
 import Scroll from '../components/Scroll'
 import ErrorBoundry from '../components/ErrorBoundry'
+import { users } from './users'
 
 class App extends Component {
     constructor() {
@@ -28,10 +29,11 @@ class App extends Component {
     }
 
     render() {
-        const filteredRobots = this.filterRobots();
+        let filteredRobots = this.filterRobots();
 
-        if (!filteredRobots.length)
-            return <h1>Loading...</h1>
+        if (!filteredRobots.length) {
+            filteredRobots = users;
+        }
 
         return (
             <div className='tc' >
