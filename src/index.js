@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import { StrictMode } from 'react';
-import App from './App'
+import App from './containers/App'
 import 'tachyons'; // npm install tachyons
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
