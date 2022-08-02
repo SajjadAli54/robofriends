@@ -60,7 +60,6 @@ class App extends Component {
     }
 
     filterRobots = () => {
-        console.log(this.props)
         const { robots } = this.state;
         const { searchfield } = this.props;
 
