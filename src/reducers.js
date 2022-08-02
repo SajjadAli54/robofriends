@@ -1,5 +1,4 @@
 import * as constants from './constants'
-import { users } from './containers/users'
 
 const initialStateSearch = {
     searchfield: ''
@@ -16,7 +15,7 @@ export const searchRobots = (state = initialStateSearch, action = {}) => {
 
 const initialStateRobots = {
     isPending: false,
-    robots: users,
+    robots: [],
     error: ''
 }
 
