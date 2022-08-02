@@ -26,7 +26,7 @@ class App extends Component {
         super()
 
         this.state = {
-            robots: []
+            robots: users
         }
     }
 
@@ -40,7 +40,7 @@ class App extends Component {
         let filteredRobots = []
 
         if (!this.state.robots.length) {
-            filteredRobots = users;
+            return <h1>Ooooops! Loading ....</h1>
         }
         else
             filteredRobots = this.filterRobots();
