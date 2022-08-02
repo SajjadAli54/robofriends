@@ -1,16 +1,23 @@
 import React from 'react';
-import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
-import { createLogger } from 'redux-logger';
 import ReactDOM from 'react-dom/client';
-import './index.css';
 import reportWebVitals from './reportWebVitals';
 import { StrictMode } from 'react';
-import App from './containers/App'
-import { searchRobots } from './reducers'
 import 'tachyons'; // npm install tachyons
 
-const store = createStore(searchRobots, applyMiddleware(createLogger()))
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware, combineReducers } from 'redux';
+import { createLogger } from 'redux-logger';
+import thunkMiddleware from 'redux-thunk';
+
+import App from './containers/App'
+import { searchRobots, requestRobots } from './reducers'
+
+import './index.css';
+
+const logger = createLogger();
+const rootReducer = combineReducers({ searchRobots, requestRobots })
+const store =
+  createStore(rootReducer, applyMiddleware(thunkMiddleware, logger))
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

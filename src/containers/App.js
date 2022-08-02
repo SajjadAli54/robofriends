@@ -6,44 +6,38 @@ import SearchBox from '../components/SearchBox'
 import './App.css'
 import Scroll from '../components/Scroll'
 import ErrorBoundry from '../components/ErrorBoundry'
-import { users } from './users.js'
 
 import * as actions from '../actions'
 
 const mapStateToProps = state => {
     return {
-        searchfield: state.searchfield
+        searchfield: state.searchRobots.searchfield,
+        robots: state.requestRobots.robots,
+        isPending: state.requestRobots.isPending,
+        error: state.requestRobots.error
     }
 }
 
 const mapDispatchToProps = dispath => {
     return {
-        onSearchChanges: event => dispath(actions.setSearchField(event.target.value))
+        onSearchChanges: event => dispath(actions.setSearchField(event.target.value)),
+        onRequestRobots: () => dispath(actions.requestRobots())
     }
 }
 class App extends Component {
-    constructor() {
-        super()
-
-        this.state = {
-            robots: users
-        }
-    }
-
     componentDidMount() {
-        fetch('https://jsonplaceholder.typicode.com/users')
-            .then(response => response.json())
-            .then(users => this.setState({ robots: users }))
+        this.props.onRequestRobots();
     }
 
     render() {
-        let filteredRobots = []
+        const { searchfield, robots, isPending } = this.props;
 
-        if (!this.state.robots.length) {
+        if (isPending) {
             return <h1>Ooooops! Loading ....</h1>
         }
-        else
-            filteredRobots = this.filterRobots();
+
+        const filteredRobots =
+            robots.filter(robot => robot.name.toLowerCase().includes(searchfield.toLowerCase()))
 
         return (
             <div className='tc' >
@@ -56,16 +50,6 @@ class App extends Component {
                 </Scroll>
             </div>
         )
-    }
-
-    filterRobots = () => {
-        const { robots } = this.state;
-        const { searchfield } = this.props;
-
-        const filteredRobots =
-            robots.filter(robot => robot.name.toLowerCase().includes(searchfield.toLowerCase()))
-
-        return filteredRobots;
     }
 }
 
